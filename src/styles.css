@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   font-family: 'Open Sans', sans-serif;
 }
@@ -20,14 +20,15 @@ body {
 
 .landing-page-container {
   background-color: rgb(28,48,74);
-  /* background-color: rgb(28,48,74, 0.75); */
-  width: 46rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 20rem;
+  /* width: 46rem; */
+  /* height: 20rem; */
+  height: 100vh;
+  width: 100vw;
 }
 
 .coming-soon-header {

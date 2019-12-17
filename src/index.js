@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { ButtonTypes, ButtonSizes } from "./components/Button/buttonTypes";
 
 import Button from "./components/Button/Button";
+import Header from "./components/Header/Header"
 
 import "./styles.css";
 
@@ -11,6 +12,7 @@ function App() {
   return (
     <React.Fragment>
       <div className="App">
+      <Header />
         <div className="landing-page-container">
             <h1 className="coming-soon-header">
           Be the First to Know When Mesh Relay Launches
