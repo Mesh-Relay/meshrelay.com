@@ -1,12 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { ButtonTypes, ButtonSizes } from "./components/Button/buttonTypes";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import Button from "./components/Button/Button";
+
+import "./styles.css";
+
+function App() {
+  return (
+    <React.Fragment>
+      <div className="App">
+        <div className="landing-page-container">
+            <h1 className="coming-soon-header">
+          Be the First to Know When Mesh Relay Launches
+        </h1>
+        <span className="call-to-action">
+          Like trading ERC-20 tokens with minimal slippage and high liquidity?
+          <div>Make sure you click <span className="get-started">Get Started</span> now to learn more.</div>
+        </span>
+        <Button
+          size={ButtonSizes.MEDIUM}
+          label="Get Started"
+          type={ButtonTypes.PRIMARY}
+        />  
+        </div>
+
+        </div>
+        </React.Fragment>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);

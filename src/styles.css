@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+.App {
+  --primary-color: #030086;
+  /* background-image: url("./images/stock-vector-candle-stick-graph-chart-of-stock-market-investment-trading-bullish-point-bearish-point-trend-of-550963924.jpg"); */
+  background-size: cover;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.landing-page-container {
+  background-color: rgb(28,48,74);
+  /* background-color: rgb(28,48,74, 0.75); */
+  width: 46rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20rem;
+}
+
+.coming-soon-header {
+  font-family: 'Nunito', sans-serif;
+  max-width: 37rem;
+  font-size: 2.925rem;
+  letter-spacing: -0.475px;
+  font-weight: 200;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1;
+}
+
+.call-to-action {
+  color: #B3EFFF;
+  margin: 26px 0 26px 0;
+}
+
+.get-started {
+
+}

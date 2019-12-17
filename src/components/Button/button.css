@@ -1,0 +1,37 @@
+.button {
+  --color-primary-light: #00CFFF;
+  --color-secondary-light: #59D1F7;
+
+  --color-black: #000000;
+  text-decoration: none;
+  font-size: 1.25rem;
+  padding: 10px 60px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.1s linear, color 0.1s linear,
+    border 0.1s linear, outline 0.1s linear;
+}
+
+.button--primary {
+  border: 2px solid transparent;
+}
+
+.button--primary {
+  background-color: var(--color-primary-light);
+  color: var(--color-black);
+}
+
+.button--primary:hover,
+.button--primary:focus {
+  background-color: var(--color-secondary-light);
+}
+
+.button--primary:focus {
+  outline: 2px solid var(--color-secondary-light);
+  outline-offset: 4px;
+}
+
+.button--medium {
+  padding: 10px 60px;
+  font-size: 1rem;
+}
