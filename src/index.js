@@ -10,7 +10,7 @@ import Header from "./components/Header/Header";
 import "./styles.css";
 
 function App() {
-  console.log('Welcome to Mesh Relay! Please get in touch if you have any feedback for the site.');
+  console.log('Welcome to Mesh Relay! Please get in touch if you have any feedback for the site. \n Thanks to LogoMakr (https://logomakr.com/) for the logo images.');
   return (
     <React.Fragment>
       <div className="App">
