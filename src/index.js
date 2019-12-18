@@ -5,11 +5,12 @@ import { ButtonTypes, ButtonSizes } from "./components/Button/buttonTypes";
 
 import Button from "./components/Button/Button";
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 
 import "./styles.css";
 
 function App() {
+  console.log('Welcome to Mesh Relay! Please get in touch if you have any feedback for the site.');
   return (
     <React.Fragment>
       <div className="App">
