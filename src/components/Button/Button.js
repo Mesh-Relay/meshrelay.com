@@ -21,7 +21,7 @@ const Button  = ({ size, theme, type, label }) => {
     return (
       <a
         className={getButtonClasses()}
-        href="https://emailoctopus.com/lists/6094294a-2098-11ea-be00-06b4694bee2a/forms/subscribe"
+        href="http://eepurl.com/gN9PQ1"
       >
         {label}
       </a>
