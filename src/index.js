@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 
 import { ButtonTypes, ButtonSizes } from "./components/Button/buttonTypes";
 
+import Honeybadger from 'honeybadger-js'
+import ErrorBoundary from '@honeybadger-io/react'
 import Button from "./components/Button/Button";
 import Header from "./components/Header/Header";
 // import Footer from "./components/Footer/Footer";
@@ -35,5 +37,16 @@ function App() {
   );
 }
 
+
+const config = {
+  api_key: process.env.REACT_APP_HONEYBADGER_API_KEY,
+  environment: process.env.NODE_ENV
+  // TODO: On deploy, generate this revision while also running curl script revision: 'git SHA/project version'
+  // https://docs.honeybadger.io/lib/javascript/integration/react.html#tracking-deploys
+}
+
+const honeybadger = Honeybadger.configure(config)
+
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+
+ReactDOM.render(<ErrorBoundary honeybadger={honeybadger}><App /></ErrorBoundary>, rootElement)
