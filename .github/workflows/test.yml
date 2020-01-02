@@ -17,4 +17,5 @@ jobs:
       - name: Run Cypress
         run: npm run test:ci
         env:
+          # Currently set in GitHub's secrets page
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
