@@ -1,19 +1,20 @@
 name: E2E
 on: push
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [13.x]
     steps:
-      - uses: actions/checkout@master
-      - name: Install dependencies
-        uses: cypress-io/github-action@v1
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          # just perform install
-          runTests: false
-      - name: Run e2e tests
-        uses: cypress-io/github-action@v1
-        with:
-          # we have already installed all dependencies above
-          install: false
-          # Cypress tests and config file are in "e2e" folder
-          working-directory: cypress
+          node-version: ${{ matrix.node-version }}
+      - name: Install Packages
+        run: npm install
+      - name: Run Cypress
+        run: npm run test:ci
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
