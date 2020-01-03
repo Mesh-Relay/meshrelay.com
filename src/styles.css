@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 .App {
@@ -18,7 +18,7 @@ body {
 }
 
 .landing-page-container {
-  background-color: rgb(28,48,74);
+  background-color: rgb(28, 48, 74);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -34,16 +34,15 @@ body {
   font-size: 2.925rem;
   letter-spacing: -0.475px;
   font-weight: 200;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0;
   line-height: 1;
 }
 
 .call-to-action {
-  color: #B3EFFF;
+  color: #b3efff;
   margin: 26px 0 26px 0;
 }
 
 .get-started {
-
 }

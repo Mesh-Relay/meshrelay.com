@@ -1,8 +1,7 @@
 export const ButtonTypes = Object.freeze({
-  PRIMARY: "primary"
-});
+  PRIMARY: 'primary',
+})
 
 export const ButtonSizes = Object.freeze({
-  MEDIUM: "medium"
-});
-
+  MEDIUM: 'medium',
+})
