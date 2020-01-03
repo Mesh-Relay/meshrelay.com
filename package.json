@@ -70,6 +70,10 @@
     "**/*.{ts,js,css,json,html,md}": [
       "prettier --write",
       "git add"
+    ],
+    "**/*.js": [
+      "eslint --fix",
+      "git add"
     ]
   }
 }
