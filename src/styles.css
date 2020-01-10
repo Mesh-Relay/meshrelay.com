@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 .App {
-  --primary-color: #030086;
   background-size: cover;
   text-align: center;
   display: flex;
@@ -18,7 +17,10 @@ body {
 }
 
 .landing-page-container {
-  background-color: rgb(28, 48, 74);
+  background-image: url('./images/concrete_wall.jpg');
+  background-size: 100%;
+  background-color: rgba(251, 251, 251, 0.5);
+  background-blend-mode: lighten;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -34,13 +36,13 @@ body {
   font-size: 2.925rem;
   letter-spacing: -0.475px;
   font-weight: 200;
-  color: #ffffff;
+  color: #051c3f;
   margin: 0;
   line-height: 1;
 }
 
 .call-to-action {
-  color: #b3efff;
+  color: #051c3f;
   margin: 26px 0 26px 0;
 }
 

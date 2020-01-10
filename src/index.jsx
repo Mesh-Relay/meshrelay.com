@@ -14,7 +14,7 @@ import './styles.css'
 
 function App() {
   console.log(
-    'Welcome to Mesh Relay! Please get in touch if you would like to provide feedback: info@meshrelay.com. \n Thanks to LogoMakr (https://logomakr.com/) for the logo images.',
+    'Welcome to Mesh Relay! Please get in touch if you would like to provide feedback: info@meshrelay.com.',
   )
   return (
     <>

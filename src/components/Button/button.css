@@ -1,8 +1,6 @@
 .button {
-  --color-primary-light: #00cfff;
-  --color-secondary-light: #59d1f7;
-
-  --color-black: #000000;
+  --color-primary-light: #279cf4;
+  --color-secondary-light: #31a6fe;
   text-decoration: none;
   font-size: 1.25rem;
   padding: 10px 60px;
