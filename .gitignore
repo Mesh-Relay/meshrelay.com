@@ -8,6 +8,9 @@
 # hidden env args
 .env
 
+# hidden dev environment settings
+.vscode
+
 # testing
 /coverage
 

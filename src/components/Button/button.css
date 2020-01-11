@@ -1,15 +1,13 @@
 .button {
-  --color-primary-light: #00CFFF;
-  --color-secondary-light: #59D1F7;
-
-  --color-black: #000000;
+  --color-primary-light: #279cf4;
+  --color-secondary-light: #31a6fe;
   text-decoration: none;
   font-size: 1.25rem;
   padding: 10px 60px;
   border-radius: 3px;
   cursor: pointer;
-  transition: background-color 0.1s linear, color 0.1s linear,
-    border 0.1s linear, outline 0.1s linear;
+  transition: background-color 0.1s linear, color 0.1s linear, border 0.1s linear,
+    outline 0.1s linear;
 }
 
 .button--primary {
