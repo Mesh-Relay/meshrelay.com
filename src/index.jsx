@@ -19,12 +19,16 @@ function App() {
         <Header />
 
         <div className="landing-page-container">
-          <h1 className="coming-soon-header">Be the First to Know When Mesh Relay Launches</h1>
           <span className="call-to-action">
-            Like trading ERC-20 tokens with minimal slippage and high liquidity?
-            <div>Make sure you click Get Started now to learn more.</div>
+            Want to exchange your ERC-20 tokens?
+            <div>Click swap to get started now.</div>
           </span>
-          <Button size={ButtonSizes.MEDIUM} label="Get Started" type={ButtonTypes.PRIMARY} />
+          <Button
+            onClick={() => console.log('Handle click')}
+            size={ButtonSizes.MEDIUM}
+            label="Swap"
+            type={ButtonTypes.PRIMARY}
+          />
         </div>
       </div>
     </>
