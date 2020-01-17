@@ -20,13 +20,21 @@ function App() {
 
         <div className="landing-page-container">
           <span className="call-to-action">
-            Want to exchange your ERC-20 tokens?
-            <div>Click swap to get started now.</div>
+            Want to exchange your ETH for ERC-20 tokens?
+            <div>Click Exchange to get started now.</div>
           </span>
           <Button
-            onClick={() => console.log('Handle click')}
+            onClick={() => {
+              window.zeroExInstant.render(
+                {
+                  orderSource: 'https://api.meshrelay.com/v3',
+                  networkId: 1,
+                },
+                'body',
+              )
+            }}
             size={ButtonSizes.MEDIUM}
-            label="Swap"
+            label="Exchange"
             type={ButtonTypes.PRIMARY}
           />
         </div>

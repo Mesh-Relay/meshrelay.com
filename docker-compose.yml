@@ -1,0 +1,91 @@
+version: '2'
+
+services:
+  traefik:
+    image: 'traefik:v2.1.2'
+    command:
+      - --api
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --providers.docker
+      - --certificatesresolvers.leresolver.acme.email=evancharris2@gmail.com
+      - --certificatesresolvers.leresolver.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.leresolver.acme.tlschallenge=true
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+      - './letsencrypt/acme.json:/letsencrypt/acme.json'
+    labels:
+      # Dashboard
+      - 'traefik.http.routers.traefik.rule=Host(`monitor.meshrelay.com`)'
+      - 'traefik.http.routers.traefik.service=api@internal'
+      - 'traefik.http.routers.traefik.tls.certresolver=leresolver'
+      - 'traefik.http.routers.traefik.entrypoints=websecure'
+      - 'traefik.http.routers.traefik.middlewares=authtraefik'
+      - 'traefik.http.middlewares.authtraefik.basicauth.users=admin:$$apr1$$dleCCyIz$$kilNekApJ89CTi4sW37nN0' # user/password
+
+      # global redirect to https
+      - 'traefik.http.routers.http-catchall.rule=hostregexp(`{host:.+}`)'
+      - 'traefik.http.routers.http-catchall.entrypoints=web'
+      - 'traefik.http.routers.http-catchall.middlewares=redirect-to-https'
+
+      # middleware redirect
+      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
+
+      # CORS
+      - 'traefik.http.middlewares.cors.headers.accesscontrolallowmethods=GET,OPTIONS,PUT'
+      - 'traefik.http.middlewares.cors.headers.accesscontrolallowheaders=Content-Type'
+      - 'traefik.http.middlewares.cors.headers.accesscontrolalloworigin=*'
+      - 'traefik.http.middlewares.cors.headers.accesscontrolmaxage=600'
+      - 'traefik.http.middlewares.cors.headers.addvaryheader=true'
+
+      # Resolves - https://community.containo.us/t/problem-with-headers-probably-forwarding/1804 - although additional work will be required to open up additional API's and preserve
+      # security and functionality. Tracking duplication of CORS settings => https://github.com/containous/traefik/pull/5996 - Following this merge, it may be sensible to migrate the cors header
+      # to individual routers
+      - 'traefik.http.routers.traefik.middlewares=cors'
+
+  frontend:
+    image: meshrelay/frontend:prod
+    labels:
+      - 'traefik.http.routers.frontend.rule=Host(`meshrelay.com`)'
+      - 'traefik.http.services.frontend.loadbalancer.server.port=80'
+      - 'traefik.http.routers.frontend.entrypoints=websecure'
+      - 'traefik.http.routers.frontend.tls=true'
+      - 'traefik.http.routers.frontend.tls.certresolver=leresolver'
+
+  backend:
+    image: 0xorg/launch-kit-backend:v3
+    labels:
+      - 'traefik.http.routers.backend.rule=Host(`api.meshrelay.com`)'
+      - 'traefik.http.services.backend.loadbalancer.server.port=3000'
+      - 'traefik.http.routers.backend.entrypoints=websecure'
+      - 'traefik.http.routers.backend.tls=true'
+      - 'traefik.http.routers.backend.tls.certresolver=leresolver'
+    environment:
+      HTTP_PORT: '3000'
+      RPC_URL: 'https://mainnet.infura.io/v3/${INFURA_PROJECT_ID}'
+      NETWORK_ID: '1'
+      CHAIN_ID: '1'
+      WHITELIST_ALL_TOKENS: 'true'
+      FEE_RECIPIENT: '0x0000000000000000000000000000000000000000'
+      MAKER_FEE_UNIT_AMOUNT: '0'
+      TAKER_FEE_UNIT_AMOUNT: '0'
+      MESH_ENDPOINT: 'ws://mesh:60557'
+
+  mesh:
+    image: 0xorg/mesh:7-0xv3 # image: 0xorg/mesh:8.1.0 is latest => Not yet supported with the v3 of backend'
+    restart: always
+    environment:
+      ETHEREUM_RPC_URL: 'https://mainnet.infura.io/v3/${INFURA_PROJECT_ID}'
+      ETHEREUM_CHAIN_ID: '1'
+      VERBOSITY: 5
+      RPC_ADDR: 'mesh:60557'
+      # improve performance. See https://0x-org.gitbook.io/mesh/ for more
+      # Documentation about Mesh and its environment variables.
+      BLOCK_POLLING_INTERVAL: '5s'
+    ports:
+      - '60557:60557'
+      - '60558:60558'
+      - '60559:60559'
