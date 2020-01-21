@@ -17,8 +17,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy-production": "react-scripts build && scp -r ./build/* ubuntu@167.71.107.103:/var/www/meshrelay.com/html",
-    "deploy-beta": "react-scripts build && scp -r ./build/* ubuntu@167.71.107.103:/var/www/beta.meshrelay.com/html",
     "cy:open": "cypress open",
     "cy:dev": "cypress run --project ./cypress --record false",
     "cy:run": "cypress run --project ./cypress --record",
