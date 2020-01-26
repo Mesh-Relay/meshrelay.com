@@ -1,0 +1,13 @@
+name: 'Terraform GitHub Actions'
+on:
+  - pull_request
+branches:
+  - master
+types: [closed]
+jobs:
+  deploy:
+    name: 'Deploy'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Echo things here'
+      - run: echo merged
