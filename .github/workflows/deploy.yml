@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Echo things here'
-      - run: echo merged
+      run: echo merged
