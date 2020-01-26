@@ -9,6 +9,6 @@ jobs:
     name: 'Deploy'
     runs-on: ubuntu-latest
     steps:
-        - name: 'Echo things here'
+      - name: 'hmm'
         run: |
           echo merged
