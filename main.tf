@@ -1,7 +1,5 @@
 # Configure the DigitalOcean Provider
-provider "digitalocean" {
-  token = var.do_token
-}
+provider "digitalocean" {}
 
 # Create a web server
 resource "digitalocean_droplet" "web-test" {
