@@ -1,0 +1,23 @@
+# Collection of dot files
+.git
+.gitignore
+.env
+.dockerignore
+.vscode
+.prettierrc.json
+.github
+.eslintignore
+.eslintrc.json
+.storybook
+
+# Automated tests
+cypress
+
+README.md
+Dockerfile
+docker-compose.yml
+
+# Artifacts that will be built during image creation.
+# This should contain all files created during `npm run build`.
+build
+node_modules

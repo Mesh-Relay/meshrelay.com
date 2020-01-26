@@ -5,7 +5,7 @@ import { ButtonTypes, ButtonSizes } from './buttonTypes'
 
 import './button.css'
 
-const Button = ({ size, type, label }) => {
+const Button = ({ size, type, label, onClick }) => {
   const getButtonClasses = () => {
     const classOptions = ['button', `button--${size}`, `button--${type}`]
 
@@ -13,13 +13,14 @@ const Button = ({ size, type, label }) => {
   }
 
   return (
-    <a className={getButtonClasses()} href="http://eepurl.com/gN9PQ1">
+    <button onClick={onClick} type="button" className={getButtonClasses()}>
       {label}
-    </a>
+    </button>
   )
 }
 
 Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
   type: PropTypes.oneOf(Object.values(ButtonTypes)),
   label: PropTypes.string.isRequired,
   size: PropTypes.oneOf(Object.values(ButtonSizes)),
