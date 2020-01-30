@@ -46,5 +46,8 @@ jobs:
           tf_actions_version: 0.12.20
           tf_actions_subcommand: 'apply'
         env:
+          TF_VAR_pvt_key: ${{ secrets.PVT_KEY }}
+          TF_VAR_buddy_webhook_token: ${{ secrets.BUDDY_WEBHOOK_TOKEN }}
+          TF_VAR_ssh_user: ${{ secrets.SSH_USER }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
