@@ -42,9 +42,8 @@ resource "null_resource" "seed" {
     user        = var.ssh_user
     type        = "ssh"
     private_key = var.pvt_key
-    # private_key = file(var.pvt_key)
-    timeout = "2m"
-    host    = data.digitalocean_droplet.web-test.ipv4_address
+    timeout     = "2m"
+    host        = data.digitalocean_droplet.web-test.ipv4_address
   }
 
   provisioner "file" {
