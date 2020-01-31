@@ -34,7 +34,6 @@ data "digitalocean_droplet" "web-test" {
 # Bootstrap the server
 resource "null_resource" "seed" {
   depends_on = [
-    digitalocean_droplet.web-test, # this line can be removed as the web-test data node is already a dependent of the DO resource
     data.digitalocean_droplet.web-test
   ]
 
