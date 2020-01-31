@@ -16,7 +16,7 @@ resource "digitalocean_tag" "blue" {
 }
 
 # Create a web server
-resource "digitalocean_droplet" "web-test" {
+resource "digitalocean_droplet" "new-droplet" {
   image  = "ubuntu-18-04-x64"
   name   = "generated-mesh-droplet"
   region = "nyc3"
@@ -27,18 +27,23 @@ resource "digitalocean_droplet" "web-test" {
   tags = [digitalocean_tag.prod.id, digitalocean_tag.blue.id]
 }
 
-# Allow access to meta data for the DO droplet
-data "digitalocean_droplet" "web-test" {
+# Allow access to meta data for the new DO droplet
+data "digitalocean_droplet" "new-droplet" {
   name = "generated-mesh-droplet"
   depends_on = [
-    digitalocean_droplet.web-test
+    digitalocean_droplet.new-droplet
   ]
+}
+
+# Allow access to meta data for the old DO droplet
+data "digitalocean_droplet" "old-droplet" {
+  tag = "prod"
 }
 
 # Bootstrap the server
 resource "null_resource" "seed" {
   depends_on = [
-    data.digitalocean_droplet.web-test
+    data.digitalocean_droplet.new-droplet
   ]
 
   connection {
@@ -46,7 +51,7 @@ resource "null_resource" "seed" {
     type        = "ssh"
     private_key = var.pvt_key
     timeout     = "2m"
-    host        = data.digitalocean_droplet.web-test.ipv4_address
+    host        = data.digitalocean_droplet.new-droplet.ipv4_address
   }
 
   provisioner "file" {
@@ -58,7 +63,7 @@ resource "null_resource" "seed" {
     inline = [
       "chmod +x /tmp/pipeline.sh",
       # Launch the buddy pipeline
-      "/tmp/pipeline.sh ${var.buddy_webhook_token} ${data.digitalocean_droplet.web-test.ipv4_address} ${data.digitalocean_droplet.web-test.id}",
+      "/tmp/pipeline.sh ${var.buddy_webhook_token} ${data.digitalocean_droplet.new-droplet.ipv4_address} ${data.digitalocean_droplet.new-droplet.id} ${data.digitalocean_droplet.old-droplet.ipv4_address}",
     ]
   }
 }
