@@ -7,10 +7,6 @@ variable "ssh_user" {}
 provider "digitalocean" {}
 
 # Create DO tags
-resource "digitalocean_tag" "prod" {
-  name = "prod"
-}
-
 resource "digitalocean_tag" "blue" {
   name = "blue"
 }
@@ -24,7 +20,7 @@ resource "digitalocean_droplet" "new-droplet" {
   ssh_keys = [
     26055817
   ]
-  tags = [digitalocean_tag.prod.id, digitalocean_tag.blue.id]
+  tags = [digitalocean_tag.blue.id]
 }
 
 # Allow access to meta data for the new DO droplet
