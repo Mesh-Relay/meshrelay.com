@@ -33,7 +33,7 @@ data "digitalocean_droplet" "new-droplet" {
 
 # Allow access to meta data for the old DO droplet
 data "digitalocean_droplet" "old-droplet" {
-  tag = "prod"
+  tag = "green"
 }
 
 # Bootstrap the server
@@ -59,7 +59,7 @@ resource "null_resource" "seed" {
     inline = [
       "chmod +x /tmp/pipeline.sh",
       # Launch the buddy pipeline
-      "/tmp/pipeline.sh ${var.buddy_webhook_token} ${data.digitalocean_droplet.new-droplet.ipv4_address} ${data.digitalocean_droplet.new-droplet.id} ${data.digitalocean_droplet.old-droplet.ipv4_address}",
+      "/tmp/pipeline.sh ${var.buddy_webhook_token} ${data.digitalocean_droplet.new-droplet.ipv4_address} ${data.digitalocean_droplet.new-droplet.id} ${data.digitalocean_droplet.old-droplet.ipv4_address} ${data.digitalocean_droplet.old-droplet.id}",
     ]
   }
 }
