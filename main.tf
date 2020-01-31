@@ -37,7 +37,7 @@ data "digitalocean_droplet" "old-droplet" {
 }
 
 # Bootstrap the server
-resource "null_resource" "seed" {
+resource "null_resource" "bootstrap" {
   depends_on = [
     data.digitalocean_droplet.new-droplet
   ]
