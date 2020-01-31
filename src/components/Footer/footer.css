@@ -14,12 +14,19 @@ footer {
   color: #fbfbfb;
 }
 
-.status-link,
-.status-link {
+.footer-link,
+.footer-link {
   color: #fbfbfb;
   text-decoration: none;
 }
 
-.status-link:hover {
+.footer-link:hover {
   text-decoration: underline;
+}
+
+.footer-link-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 7rem;
 }

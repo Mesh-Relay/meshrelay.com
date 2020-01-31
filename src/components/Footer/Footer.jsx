@@ -5,9 +5,14 @@ import './footer.css'
 const Footer = () => {
   return (
     <footer>
-      <a className="status-link" href="https://status.meshrelay.com">
-        Status
-      </a>
+      <div className="footer-link-container">
+        <a className="footer-link status-link" href="https://status.meshrelay.com">
+          Status
+        </a>
+        <a className="footer-link" href="https://developers.meshrelay.com">
+          API
+        </a>
+      </div>
       <div className="social-icons">
         <a
           aria-label="GitHub Logo linking to Mesh Relay GitHub repository"
