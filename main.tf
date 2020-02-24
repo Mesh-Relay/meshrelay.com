@@ -16,7 +16,8 @@ resource "digitalocean_droplet" "new-droplet" {
   image  = "ubuntu-18-04-x64"
   name   = "generated-mesh-droplet"
   region = "nyc3"
-  size   = "s-4vcpu-8gb"
+  size   = "s-2vcpu-2gb"
+  # size   = "s-4vcpu-8gb"
   ssh_keys = [
     26055817
   ]
