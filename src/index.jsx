@@ -14,6 +14,7 @@ function App() {
   console.log(
     'Welcome to Mesh Relay! Please get in touch if you would like to provide feedback: info@meshrelay.com.',
   )
+  const FRONTEND_ONLY = process.env.REACT_APP_FRONTEND_ONLY
   return (
     <>
       <div className="App">
@@ -28,7 +29,9 @@ function App() {
             onClick={() => {
               window.zeroExInstant.render(
                 {
-                  orderSource: 'https://api.meshrelay.com/v3',
+                  orderSource: FRONTEND_ONLY
+                    ? 'https://api.radarrelay.com/0x/v3'
+                    : 'https://api.meshrelay.com/v3',
                   networkId: 1,
                 },
                 'body',
@@ -40,7 +43,7 @@ function App() {
           />
         </div>
       </div>
-      <Footer />
+      {FRONTEND_ONLY ? null : <Footer />}
     </>
   )
 }
